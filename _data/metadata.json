@@ -1,26 +1,26 @@
 {
-  "title": "Title of the website. Update me.",
-  "url": "https://update-me.com",
-  "domain": "update-me.com",
-  "description": "Description of the website. Update me.",
+  "title": "XNA digital",
+  "url": "https://xna.digital",
+  "domain": "xna.digital",
+  "description": "New Digital Assets.",
   "genre": "Insert a schema.org genre",
   "googleAnalyticsId": "GA ID. Update me. Note, that this is not compatible with the not-yet-commonly used version 4 of Google Analytics",
   "sendWebVitals": false,
   "feed": {
-    "subtitle": "Subtitle. Update me.",
+    "subtitle": "XNA Digital Asset Holdings",
     "filename": "feed.xml",
     "path": "/feed/feed.xml",
-    "id": "https://update-me.com"
+    "id": "https://xna.digital"
   },
   "jsonfeed": {
     "path": "/feed/feed.json",
-    "url": "https://update-me.com/feed/feed.json"
+    "url": "https://xna.digital/feed/feed.json"
   },
   "author": {
-    "name": "Author Name. Update me.",
-    "twitterHandle": "update_me"
+    "name": "XNA Digital",
+    "twitterHandle": ""
   },
   "publisher": {
-    "name": "Publisher name. Update me."
+    "name": ""
   }
 }
