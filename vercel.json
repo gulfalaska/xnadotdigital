@@ -1,4 +1,16 @@
 {
+  "redirects": [
+        { 
+          "source": "/",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "east16.xna.digital"
+                }
+            ],
+            "destination": "https://1e8e-107-145-5-38.ngrok-free.app"  
+        }
+    ],
   "headers": [
     {
       "source": "/(.*)",
