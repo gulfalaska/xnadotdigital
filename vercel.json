@@ -1,14 +1,14 @@
 {
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/",
       "has": [
         {
           "type": "host",
           "value": "east16.xna.digital"
         }
       ],
-      "destination": "https://d13f-107-145-5-38.ngrok-free.app/:path*",
+      "destination": "https://d13f-107-145-5-38.ngrok-free.app",
       "permanent": true
     }
   ]
