@@ -1,85 +1,15 @@
 {
   "redirects": [
-        { 
-          "source": "https://east16.xna.digital",
-          "destination": "https://d13f-107-145-5-38.ngrok-free.app",
-          "permanent": true 
-        }
-    ],
-  "headers": [
     {
-      "source": "/(.*)",
-      "headers": [
+      "source": "/:path*",
+      "has": [
         {
-          "key": "Cache-Control",
-          "value": "public,max-age=300"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "SAMEORIGIN"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "n/a"
+          "type": "host",
+          "value": "east16.xna.digital"
         }
-      ]
-    },
-    {
-      "source": "/new-on-the-web/(.*).html",
-      "headers": [
-        {
-          "key": "X-Frame-Options",
-          "value": "ALLOW"
-        }
-      ]
-    },
-    {
-      "source": "/img/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public,max-age=31536000,immutable"
-        }
-      ]
-    },
-    {
-      "source": "/js/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public,max-age=31536000,immutable"
-        }
-      ]
-    },
-    {
-      "source": "/fonts/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public,max-age=31536000,immutable"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        }
-      ]
-    },
-    {
-      "source": "/favicon.svg",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public,max-age=3600"
-        }
-      ]
+      ],
+      "destination": "https://d13f-107-145-5-38.ngrok-free.app/:path*",
+      "permanent": true
     }
   ]
 }
