@@ -59,28 +59,31 @@
     <script csp-hash>if (/Mac OS X/.test(navigator.userAgent))document.documentElement.classList.add('apple')
     </script>
     <!-- css is inserted by optimize-html custom plugin -->
+<style>
+  body {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+  }
+
+  .sidebar-placeholder {
+    width: 240px;
+    height: 100vh;
+  }
+
+  .page-wrapper {
+    flex: 1;
+    padding: 1rem;
+  }
+</style>
+
   </head>
-  <body>
+<body>
+  <div class="sidebar-placeholder"></div>  {# Future sidebar placeholder #}
+
+  <div class="page-wrapper">
     <header>
-      <nav>
-        <div id="nav">
-          <h1><a href="{{ '/' | url }}" title="Homepage">{{ metadata.title }}</a></h1>
-          {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
-          {%- for entry in collections.all | eleventyNavigation %}
-            <a href="{{ entry.url | url }}">{{ entry.title }}</a>
-          {%- endfor %}
-        </div>
-        <div id="reading-progress" aria-hidden="true"></div>
-      </nav>
-      <h1>{{ title }}</h1>
-      {% block extraArticleHeader %}{% endblock %}
-      <dialog id="message"></dialog>
-      {% if googleanalytics %}
-      <noscript>
-        <img src="/api/ga?v=1&_v=j83&t=pageview&dr=https%3A%2F%2Fno-script.com&_s=1&dh={{ metadata.domain | encodeURIComponent }}&dp={{ page.url | encodeURIComponent }}&ul=en-us&de=UTF-8&dt={{title|encodeURIComponent}}&tid={{googleanalytics}}" width="1" height="1"
-        style="display:none" alt="">
-      </noscript>
-      {% endif %}
+      ...
     </header>
 
     <main>
@@ -98,7 +101,12 @@
     <footer>
       <a href="/about/">{{ metadata.author.name }}</a>
     </footer>
+<footer style="font-size: 0.9rem; text-align: center; margin-top: 2rem;">
+  <a href="/privacy/" style="margin-right: 1rem;">Privacy Policy</a>
+  <a href="/terms/" style="margin-right: 1rem;">Terms & Conditions</a>
+  <span>&copy; {{ now | date("yyyy") }} {{ metadata.title }}. All rights reserved.</span>
+</footer>
+  </div>
+</body>
 
-    <!-- Current page: {{ page.url | url }} -->
-  </body>
 </html>
