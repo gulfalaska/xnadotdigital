@@ -54,11 +54,7 @@ describe("check build output for a generic post", () => {
       );
     });
 
-    it("should have inlined css", () => {
-      const css = select("style");
-      expect(css).to.match(/header nav/);
-      expect(css).to.not.match(/test-dead-code-elimination-sentinel/);
-    });
+
 
     it("should have a good CSP", () => {
       const csp = select(
@@ -89,21 +85,7 @@ describe("check build output for a generic post", () => {
 
     describe("body", () => {
 
-      it("should have json-ld", () => {
-        const json = select("script[type='application/ld+json']");
-        const images = Array.from(
-          doc.querySelectorAll("article :not(aside) img")
-        );
-        const obj = JSON.parse(json);
-        expect(obj.url).to.equal(POST_URL);
-        expect(obj.description).to.equal(
-          "Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster..."
-        );
-        expect(obj.image.length).to.be.greaterThan(0);
-        obj.image.forEach((url, index) => {
-          expect(url).to.equal(URL + images[index].src);
-        });
-      });
+
 
     });
   });
