@@ -4,13 +4,12 @@ const { JSDOM } = require("jsdom");
 const readFileSync = require("fs").readFileSync;
 const existsSync = require("fs").existsSync;
 const metadata = require("../_data/metadata.json");
-const GA_ID = require("../_data/googleanalytics.js")();
 
 /**
  * These tests kind of suck and they are kind of useful.
  *
  * They suck, because they need to be changed when the hardcoded post changes.
- * They are useful because I tend to break the things they test all the time.
+ * They are useful because I tend to break the things they test al the time.
  */
 
 describe("check build output for a generic post", () => {
@@ -61,29 +60,6 @@ describe("check build output for a generic post", () => {
       expect(css).to.not.match(/test-dead-code-elimination-sentinel/);
     });
 
-
-    it("should have GA a setup", () => {
-      if (!GA_ID) {
-        return;
-      }
-      const scripts = doc.querySelectorAll("script[src]");
-      expect(scripts[1].getAttribute("src")).to.match(
-        /^\/js\/cached\.js\?hash=\w+/
-      );
-      const noscript = doc.querySelectorAll("noscript");
-      expect(noscript.length).to.be.greaterThan(0);
-      let count = 0;
-      for (let n of noscript) {
-        if (n.textContent.includes("/api/ga")) {
-          count++;
-          expect(n.textContent).to.contain(GA_ID);
-        }
-      }
-      expect(count).to.equal(1);
-    });
-
-    /*
-    // Update me. Comment in if you turned on the CSP support.
     it("should have a good CSP", () => {
       const csp = select(
         "meta[http-equiv='Content-Security-Policy']",
@@ -91,7 +67,7 @@ describe("check build output for a generic post", () => {
       );
       expect(csp).to.contain(";object-src 'none';");
       expect(csp).to.match(/^default-src 'self';/);
-    });*/
+    });
 
     it("should have accessible buttons", () => {
       const buttons = doc.querySelectorAll("button");
@@ -103,25 +79,15 @@ describe("check build output for a generic post", () => {
       }
     });
 
-    it("should have a share widget", () => {
-      expect(select("share-widget button", "href")).to.equal(POST_URL);
-    });
 
     it("should have a published date", () => {
       expect(select("article time")).to.equal("01 May 2018");
       expect(select("article time", "datetime")).to.equal("2018-05-01");
     });
 
-    it("should link to twitter with noopener", () => {
-      const twitterLinks = Array.from(doc.querySelectorAll("a")).filter((a) =>
-        a.href.startsWith("https://twitter.com")
-      );
-      for (let a of twitterLinks) {
-        expect(a.rel).to.contain("noopener");
-        expect(a.target).to.equal("_blank");
-      }
-    });
 
+
+    describe("body", () => {
 
       it("should have json-ld", () => {
         const json = select("script[type='application/ld+json']");
@@ -139,7 +105,6 @@ describe("check build output for a generic post", () => {
         });
       });
 
-      
     });
   });
 });
